@@ -13,7 +13,7 @@ const config: ThemeConfig = {
 const theme = extendTheme({ config })
 
 export const App = () => {
-  const [logged, setLogged] = React.useState(true)
+  const [logged, setLogged] = React.useState(false)
 
   return (
     <ChakraProvider theme={theme}>
