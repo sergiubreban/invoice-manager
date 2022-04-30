@@ -1,7 +1,7 @@
 import { Box, Button, FormControl, FormLabel, Input, Wrap, WrapItem } from '@chakra-ui/react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { useAppToast, usePdf, useSeriesColRef, useUpdateDoc } from '../../Hooks'
+import { usePdf, useSeriesColRef, useUpdateDoc } from '../../Hooks'
 import { AutoComplete, AutoCompleteInput, AutoCompleteItem, AutoCompleteList } from '@choc-ui/chakra-autocomplete'
 import { useMemo, useState } from 'react'
 import { CompanyType } from '../../types'
@@ -12,12 +12,12 @@ import ReactDatePicker from 'react-datepicker'
 import { addDoc } from 'firebase/firestore'
 
 const InvoiceForm = () => {
-  const toast = useAppToast()
+  // const toast = useAppToast()
   const { t } = useTranslation()
   const {
-    register,
+    // register,
     handleSubmit,
-    formState: { errors },
+    // formState: { errors },
   } = useForm()
   const { myClients } = useMyClients()
   const { myCompanies } = useMyCompanies()

@@ -1,18 +1,12 @@
 import { Wrap, WrapItem } from '@chakra-ui/react'
-import { useEffect } from 'react'
 import { MyClientsProvider } from '../Context/MyClients'
 import { MyCompaniesProvider } from '../Context/MyCompanies'
-import { usePdf } from '../Hooks'
 import MyClients from './Clients/MyClients'
 import MyCompanies from './Companies/MyCompanies'
 import Invoices from './Invoices'
 
 const Dashboard = () => {
-  // const {createPdf} =usePdf()
 
-  // useEffect(() => {
-  //   createPdf()
-  // },  [])
   return (
     <MyCompaniesProvider>
       <MyClientsProvider>

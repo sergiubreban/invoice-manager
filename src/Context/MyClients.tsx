@@ -1,4 +1,4 @@
-import { createContext, FC, useContext, useMemo, useState } from 'react'
+import { createContext, FC, useContext, useMemo } from 'react'
 import { useCollection } from 'react-firebase-hooks/firestore'
 import { useClientColRef } from '../Hooks'
 import { CompanyType } from '../types'

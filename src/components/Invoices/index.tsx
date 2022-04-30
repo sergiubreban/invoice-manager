@@ -1,4 +1,4 @@
-import { Box, Button, Center, Flex, Stack, Text } from '@chakra-ui/react'
+import { Button, Center, Flex, Stack, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import InvoiceForm from '../forms/Invoice'
