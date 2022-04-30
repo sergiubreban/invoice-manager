@@ -37,7 +37,7 @@ const InvoiceForm = () => {
   })
   const { createPdf } = usePdf()
   const clientRef = useSeriesColRef()
-  const [value, loading, error] = useCollection(clientRef)
+  const [value] = useCollection(clientRef)
   const updateSeriesDoc = useUpdateDoc('Series')
   const seriesModelRef = useSeriesColRef()
   const series: any = useMemo(() => value?.docs?.map((doc) => ({ id: doc.id as string, ...doc.data() })), [value])
