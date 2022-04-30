@@ -1,10 +1,16 @@
 import * as React from 'react'
-import { ChakraProvider, Box, Grid, theme, VStack } from '@chakra-ui/react'
+import { ChakraProvider, Box, Grid, VStack, extendTheme, ThemeConfig } from '@chakra-ui/react'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import './i18n'
 import 'react-datepicker/dist/react-datepicker.css'
+const config: ThemeConfig = {
+  initialColorMode: 'dark',
+  useSystemColorMode: false,
+}
+
+const theme = extendTheme({ config })
 
 export const App = () => {
   const [logged, setLogged] = React.useState(true)
