@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import {
   IconButton,
   Modal,
@@ -8,42 +8,42 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-} from '@chakra-ui/react';
-import { addDoc } from 'firebase/firestore';
-import { useTranslation } from 'react-i18next';
-import { useAppToast, useCompanyColRef } from '../../Hooks';
-import { IoIosAddCircle } from 'react-icons/io';
-import CompanyForm from '../forms/Company';
-import { CompanyType } from '../../types';
+} from '@chakra-ui/react'
+import { addDoc } from 'firebase/firestore'
+import { useTranslation } from 'react-i18next'
+import { useAppToast, useCompanyColRef } from '../../Hooks'
+import { IoIosAddCircle } from 'react-icons/io'
+import CompanyForm from '../forms/Company'
+import { CompanyType } from '../../types'
 
 const CreateCompanyModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isLoading, setIsLoading] = useState(false);
-  const companyModelRef = useCompanyColRef();
-  const toast = useAppToast();
-  const { t } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isLoading, setIsLoading] = useState(false)
+  const companyModelRef = useCompanyColRef()
+  const toast = useAppToast()
+  const { t } = useTranslation()
 
   const submitNewCompany = async (form: CompanyType) => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
-      addDoc(companyModelRef, form);
+      addDoc(companyModelRef, form)
 
       toast({
         title: t('Contact saved!'),
         status: 'success',
-      });
+      })
 
-      onClose();
+      onClose()
     } catch (error) {
       toast({
         title: t('There was an unexpected error. Please try again.'),
         status: 'error',
-      });
+      })
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -61,17 +61,12 @@ const CreateCompanyModal = () => {
           <ModalHeader>{t('New Contact')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <CompanyForm
-              model='Company'
-              actionText={t('Add')}
-              onSubmit={submitNewCompany}
-              isLoading={isLoading}
-            />
+            <CompanyForm model="Company" actionText={t('Add')} onSubmit={submitNewCompany} isLoading={isLoading} />
           </ModalBody>
         </ModalContent>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default CreateCompanyModal;
+export default CreateCompanyModal

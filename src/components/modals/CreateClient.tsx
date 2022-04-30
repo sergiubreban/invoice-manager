@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'
 import {
   IconButton,
   Modal,
@@ -8,42 +8,42 @@ import {
   ModalHeader,
   ModalOverlay,
   useDisclosure,
-} from '@chakra-ui/react';
-import { addDoc } from 'firebase/firestore';
-import { useTranslation } from 'react-i18next';
-import { useAppToast, useClientColRef } from '../../Hooks';
-import { IoIosAddCircle } from 'react-icons/io';
-import CompanyForm from '../forms/Company';
-import { CompanyType } from '../../types';
+} from '@chakra-ui/react'
+import { addDoc } from 'firebase/firestore'
+import { useTranslation } from 'react-i18next'
+import { useAppToast, useClientColRef } from '../../Hooks'
+import { IoIosAddCircle } from 'react-icons/io'
+import CompanyForm from '../forms/Company'
+import { CompanyType } from '../../types'
 
 const CreateClientModal = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [isLoading, setIsLoading] = useState(false);
-  const clientModelRef = useClientColRef();
-  const toast = useAppToast();
-  const { t } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isLoading, setIsLoading] = useState(false)
+  const clientModelRef = useClientColRef()
+  const toast = useAppToast()
+  const { t } = useTranslation()
 
   const submitNewClient = async (form: CompanyType) => {
-    setIsLoading(true);
+    setIsLoading(true)
 
     try {
-      addDoc(clientModelRef, form);
+      addDoc(clientModelRef, form)
 
       toast({
         title: t('Contact saved!'),
         status: 'success',
-      });
+      })
 
-      onClose();
+      onClose()
     } catch (error) {
       toast({
         title: t('There was an unexpected error. Please try again.'),
         status: 'error',
-      });
+      })
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
-  };
+  }
 
   return (
     <>
@@ -61,17 +61,12 @@ const CreateClientModal = () => {
           <ModalHeader>{t('New Contact')}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <CompanyForm
-              model='Client'
-              actionText={t('Add')}
-              onSubmit={submitNewClient}
-              isLoading={isLoading}
-            />
+            <CompanyForm model="Client" actionText={t('Add')} onSubmit={submitNewClient} isLoading={isLoading} />
           </ModalBody>
         </ModalContent>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default CreateClientModal;
+export default CreateClientModal

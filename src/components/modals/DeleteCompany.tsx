@@ -10,32 +10,32 @@ import {
   ModalOverlay,
   Text,
   useDisclosure,
-} from '@chakra-ui/react';
-import { useTranslation } from 'react-i18next';
-import { useAppToast, useCompanyDocRef } from '../../Hooks';
-import { MdDelete } from 'react-icons/md';
-import { deleteDoc } from 'firebase/firestore';
+} from '@chakra-ui/react'
+import { useTranslation } from 'react-i18next'
+import { useAppToast, useCompanyDocRef } from '../../Hooks'
+import { MdDelete } from 'react-icons/md'
+import { deleteDoc } from 'firebase/firestore'
 
 const DeleteCompanyModal = ({ docId }: { docId: string }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const companyModelRef = useCompanyDocRef(docId);
-  const toast = useAppToast();
-  const { t } = useTranslation();
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const companyModelRef = useCompanyDocRef(docId)
+  const toast = useAppToast()
+  const { t } = useTranslation()
 
   const confirmDelete = async () => {
     try {
-      await deleteDoc(companyModelRef);
+      await deleteDoc(companyModelRef)
       toast({
         title: t('Company deleted!'),
         status: 'success',
-      });
+      })
     } catch (error) {
       toast({
         title: t('There was an unexpected error. Please try again.'),
         status: 'error',
-      });
+      })
     }
-  };
+  }
 
   return (
     <>
@@ -59,7 +59,7 @@ const DeleteCompanyModal = ({ docId }: { docId: string }) => {
         </ModalContent>
       </Modal>
     </>
-  );
-};
+  )
+}
 
-export default DeleteCompanyModal;
+export default DeleteCompanyModal

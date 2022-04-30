@@ -1,0 +1,15 @@
+{
+  "defaultSeverity": "error",
+  "extends": ["tslint-react", "tslint-config-prettier"],
+  "jsRules": {},
+  "rules": {
+    "no-unused-expression": false,
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": false,
+    "no-empty": false
+  },
+  "rulesDirectory": [],
+  "linterOptions": {
+    "exclude": ["node_modules/**/*.ts"]
+  }
+}

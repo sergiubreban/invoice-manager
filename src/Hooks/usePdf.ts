@@ -1,4 +1,4 @@
-import jsPDFInvoiceTemplate, { OutputType } from "jspdf-invoice-template";
+import jsPDFInvoiceTemplate, { OutputType } from 'jspdf-invoice-template'
 
 const defaultProps = {
   outputType: OutputType.Save,
@@ -16,57 +16,50 @@ const defaultProps = {
   //   }
   // },
   business: {
-    name: "BRB CONNECT SOLUTIONS SRL",
-    address: "B-dul Mihai Viteazul, 66, Ap.12 450066 Zalau, Romania",
-    phone: "44695066, ROONRC.J31/453/2021",
-    email: "Account: 77873009, Sort code: 04-00-75",
-    email_1: "Bank / Payment insitution: Revolut Ltd",
-    website: "contact@breban.ro",
+    name: 'BRB CONNECT SOLUTIONS SRL',
+    address: 'B-dul Mihai Viteazul, 66, Ap.12 450066 Zalau, Romania',
+    phone: '44695066, ROONRC.J31/453/2021',
+    email: 'Account: 77873009, Sort code: 04-00-75',
+    email_1: 'Bank / Payment insitution: Revolut Ltd',
+    website: 'contact@breban.ro',
   },
   contact: {
-    label: "Invoice issued for:",
-    name: "YLD LIMITED",
-    address: "08761606",
-    phone: "Registered in England and Wales",
-    email: "20 old Bailey",
-    otherInfo: "London EC4M7AN, England",
+    label: 'Invoice issued for:',
+    name: 'YLD LIMITED',
+    address: '08761606',
+    phone: 'Registered in England and Wales',
+    email: '20 old Bailey',
+    otherInfo: 'London EC4M7AN, England',
   },
   invoice: {
-    label: "Invoice BSYLD #: ",
+    label: 'Invoice BSYLD #: ',
     num: 1,
-    invDate: "Issue Date: 30/04/2022",
-    invGenDate: "Due Date: 30/05/2022",
+    invDate: 'Issue Date: 30/04/2022',
+    invGenDate: 'Due Date: 30/05/2022',
     headerBorder: false,
     tableBodyBorder: false,
     header: [
       {
-        title: "#",
+        title: '#',
         style: {
-          width: 10
-        }
+          width: 10,
+        },
       },
       {
-        title: "Service",
+        title: 'Service',
         style: {
-          width: 80
-        }
+          width: 80,
+        },
       },
-      { title: "Price" },
-      { title: "Quantity" },
-      { title: "Unit" },
-      { title: "Total" }
+      { title: 'Price' },
+      { title: 'Quantity' },
+      { title: 'Unit' },
+      { title: 'Total' },
     ],
-    table: [[
-      1,
-      "IT consultancy",
-      500,
-      8,
-      "days",
-      500 * 8
-    ]],
-    invTotalLabel: "Total:",
+    table: [[1, 'IT consultancy', 500, 8, 'days', 500 * 8]],
+    invTotalLabel: 'Total:',
     invTotal: `${500 * 8}`,
-    invCurrency: "GBP",
+    invCurrency: 'GBP',
     // not
     // row1: {
     //   col1: 'VAT:',
@@ -91,11 +84,14 @@ const defaultProps = {
   //   text: "The invoice is created on a computer and is valid without the signature and stamp.",
   // },
   pageEnable: true,
-  pageLabel: "Page ",
-};
+  pageLabel: 'Page ',
+}
 
 const usePdf = () => {
-  return { createPdf: (props?: any) => jsPDFInvoiceTemplate({ ...defaultProps, ...props, invoice: { ...defaultProps.invoice, ...props?.invoice } }) }
-};
+  return {
+    createPdf: (props?: any) =>
+      jsPDFInvoiceTemplate({ ...defaultProps, ...props, invoice: { ...defaultProps.invoice, ...props?.invoice } }),
+  }
+}
 
 export { usePdf }
