@@ -73,6 +73,7 @@ const UpdatePanel = ({
       {...company}
       model={dbRef}
       onSubmit={handleCompanyUpdate}
+      update
     />
   )
 }

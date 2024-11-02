@@ -8,6 +8,7 @@ interface CompanyFormProps extends CompanyType {
   isLoading: boolean
   actionText: string
   model: 'Client' | 'Company'
+  update?: boolean
   onSubmit: (data: CompanyType) => void
 }
 
@@ -23,7 +24,7 @@ const CompanyForm = (props: CompanyFormProps) => {
 
   const submitForm = async (data: CompanyType) => {
     const { line1, line2, line3, line4, line5, name, cui } = data
-    if (cui && cuis.indexOf(cui) === -1) {
+    if (cui) {
       props.onSubmit({
         name: name!,
         cui,

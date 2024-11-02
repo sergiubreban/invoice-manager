@@ -1,6 +1,6 @@
 import jsPDFInvoiceTemplate, { OutputType } from 'jspdf-invoice-template'
 
-const defaultProps = {
+export const defaultPDFProps = {
   outputType: OutputType.Save,
   returnJsPDFDocObject: true,
   fileName: `Invoice ${new Date().toLocaleDateString()}`,
@@ -33,7 +33,7 @@ const defaultProps = {
   },
   invoice: {
     label: 'Invoice BSYLD #: ',
-    num: 1,
+    num: 3,
     invDate: 'Issue Date: 30/04/2022',
     invGenDate: 'Due Date: 30/05/2022',
     headerBorder: false,
@@ -90,7 +90,7 @@ const defaultProps = {
 const usePdf = () => {
   return {
     createPdf: (props?: any) =>
-      jsPDFInvoiceTemplate({ ...defaultProps, ...props, invoice: { ...defaultProps.invoice, ...props?.invoice } }),
+      jsPDFInvoiceTemplate({ ...defaultPDFProps, ...props, business: { ...defaultPDFProps.business, ...props?.business }, invoice: { ...defaultPDFProps.invoice, ...props?.invoice } }),
   }
 }
 
