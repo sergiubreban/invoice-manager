@@ -34,7 +34,6 @@ const InvoiceForm = () => {
     return date
   })
   const [invoiceLines, setInvoiceLines] = useState<any[]>([{}])
-  console.log({ myCompany })
   const { createPdf } = usePdf()
   const clientRef = useSeriesColRef()
   const [value] = useCollection(clientRef)
@@ -101,7 +100,7 @@ const InvoiceForm = () => {
         invTotal: `${invoiceLines.reduce((acc, curr) => {
           const addedTva = (1 + Number(curr.tva) / 100)
           const priceItem = ((curr.price * curr.quantity) * (includeTva ? addedTva : 1))
-          console.log(priceItem, typeof priceItem)
+          // console.log(priceItem, typeof priceItem)
           return (acc + priceItem)
         }, 0).toFixed(2)}`
         // invTotal: `${price * quantity}`,
@@ -125,7 +124,7 @@ const InvoiceForm = () => {
             <FormLabel htmlFor="myCompany">{'MyCompany'}</FormLabel>
             <AutoComplete
               onChange={(val) => {
-                setMyCompany(myCompanies.find((company) => company.name === val)!)
+                setMyCompany(myCompanies.find((company) => `${company.name}-${company.id}` === val)!)
                 return val
               }}
               openOnFocus
@@ -135,7 +134,7 @@ const InvoiceForm = () => {
                 {myCompanies.map((company, cid) => (
                   <AutoCompleteItem
                     key={`option-${cid}`}
-                    value={company.name}
+                    value={`${company.name}-${company.id}`}
                     textTransform="capitalize"
                     _selected={{ bg: 'whiteAlpha.50' }}
                     _focus={{ bg: 'whiteAlpha.100' }}
